@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Assignment-Module-2</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- =================== Module-2 : Assignment ========================= -->
 
     <!-- ======================= (1) DOM Manipulation ===================== -->
@@ -13,72 +13,92 @@
     <!-- ====================  (2) Click Counter ===================== -->
     <h1>Button Click Counter</h1>
     <p>Click count: <span id="count">0</span></p>
-    <button id="incrementButton">Click Me</button><br><br>
+    <button id="incrementButton">Click Me</button><br /><br />
 
     <!-- ===================== (3) Image Switcher =================== -->
 
-    <img id="imageElement" src="Image/360_F_556452846_1y7SOsbai37AXoaJ03te3P7gKakkxRn9.jpg" alt="Image">
-    <br>
+    <img
+      id="imageElement"
+      src="Image/360_F_556452846_1y7SOsbai37AXoaJ03te3P7gKakkxRn9.jpg"
+      alt="Image"
+    />
+    <br />
     <button id="button1">Switch to Image 1</button>
 
     <button id="button2">Switch to Image 2</button>
 
+    <!-- ====================== (4) ==================== -->
 
     <script>
-        // (1) DOM Manipulation JS Part 
+      // (1) DOM Manipulation JS Part
 
-        // Get references to the button and div elements
-        const button = document.getElementById('changeContentButton');
-        const contentDiv = document.getElementById('contentDiv');
+      // Get references to the button and div elements
+      const button = document.getElementById("changeContentButton");
+      const contentDiv = document.getElementById("contentDiv");
 
-        // Function to handle the button click event
-        function handleButtonClick() {
-            // Generate a random number between 1 and 3
-            const randomNumber = Math.floor(Math.random() * 2) + 1;
+      // Function to handle the button click event
+      function handleButtonClick() {
+        // Generate a random number between 1 and 3
+        const randomNumber = Math.floor(Math.random() * 2) + 1;
 
-            // Depending on the random number, change the content of the div
-            switch (randomNumber) {
-                case 1:
-                    contentDiv.innerHTML = '<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>';
-                    break;
-                
-                case 2:
-                    // You can also change the content to an image
-                    contentDiv.innerHTML = '<img src="Image/Magpie.jpg" alt="Random Image" width="200px" height="200px" >';
-                    break;
-                default:
-                    contentDiv.innerHTML = '<p>Something went wrong!</p>';
-            }
+        // Depending on the random number, change the content of the div
+        switch (randomNumber) {
+          case 1:
+            contentDiv.innerHTML =
+              "<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>";
+            break;
+
+          case 2:
+            // You can also change the content to an image
+            contentDiv.innerHTML =
+              '<img src="Image/Magpie.jpg" alt="Random Image" width="200px" height="200px" >';
+            break;
+          default:
+            contentDiv.innerHTML = "<p>Something went wrong!</p>";
         }
+      }
 
-        // Add a click event listener to the button, calling the handleButtonClick function
-        button.addEventListener('click', handleButtonClick);
+      // Add a click event listener to the button, calling the handleButtonClick function
+      button.addEventListener("click", handleButtonClick);
 
-        /* ======================= (2) Click Counter JS part ============*/
-         // JavaScript code to handle button click event and increment count
-         const countElement = document.getElementById('count');
-        const incrementButton = document.getElementById('incrementButton');
+      /* ======================= (2) Click Counter JS part ============*/
+      // JavaScript code to handle button click event and increment count
+      const countElement = document.getElementById("count");
+      const incrementButton = document.getElementById("incrementButton");
 
-        let count = 0;
+      let count = 0;
 
-        incrementButton.addEventListener('click', () => {
-            count++;
-            countElement.textContent = count;
-        });
+      incrementButton.addEventListener("click", () => {
+        count++;
+        countElement.textContent = count;
+      });
 
-        /* =================== (3)Image Switcher JS Part=====================*/
+      /* =================== (3)Image Switcher JS Part=====================*/
 
-        const imageElement = document.getElementById('imageElement');
-        const button1 = document.getElementById('button1');
-        const button2 = document.getElementById('button2');
+      const imageElement = document.getElementById("imageElement");
+      const button1 = document.getElementById("button1");
+      const button2 = document.getElementById("button2");
 
-        button1.addEventListener('click', function () {
-            imageElement.src = 'Image/360_F_556452846_1y7SOsbai37AXoaJ03te3P7gKakkxRn9.jpg';
-        });
+      button1.addEventListener("click", function () {
+        imageElement.src =
+          "Image/360_F_556452846_1y7SOsbai37AXoaJ03te3P7gKakkxRn9.jpg";
+      });
 
-        button2.addEventListener('click', function () {
-            imageElement.src = 'Image/road-1072823_640.jpg';
+      button2.addEventListener("click", function () {
+        imageElement.src = "Image/road-1072823_640.jpg";
+      });
+
+      /* ======================= (4) Ajax ====================== */
+
+      fetch("https://jsonplaceholder.typicode.com/posts")
+        .then((response) => response.json()) // Parse the response as JSON
+        .then((data) => {
+          // Print or console.log all the data
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error("Error fetching data:", error);
         });
     </script>
-</body>
+  </body>
 </html>
